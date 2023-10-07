@@ -1,0 +1,148 @@
+.homepage {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* background-image: url(../../backgroun_img.jpg);
+  background-size:cover;
+  background-repeat: none; */
+  
+
+  /* background-color: black; */
+}
+.body {
+  display: relative;
+  /* margin: 50px auto; */
+}
+.createRoom {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.createButton {
+  width: 120px;
+  height: 48px;
+  background: linear-gradient(-45deg, #f35f25, #ff4800);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 10px;
+  box-shadow: none;
+  border: none;
+  transition: 0.15s;
+  margin-right: 40px;
+  font-size: 1rem;
+  user-select: none;
+  cursor: pointer;
+ 
+}
+
+.btnIcon {
+ margin-left: 7px;
+ width: 20px;
+ display: flex;
+ height: 40px;
+ align-items: center;
+ justify-content: center;
+}
+.joinInput {
+  width: 240px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputField {
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  color: rgb(240, 156, 156);
+  box-shadow: 0 0 0 1px white;
+  background-color: #ebdddddb;
+  border: none;
+  border-radius: 10px;
+  transition: 0.15s;
+  /* display: flex; */
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+  background-image: url(https://img.icons8.com/ios-glyphs/30/ffffff/keyboard.png);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-position-x: 10px;
+  padding-left: 50px;
+  font-size: 1rem;
+  letter-spacing: 0.00625em;
+  user-select: none;
+  outline: none !important;
+  cursor: text;
+}
+.inputField:hover {
+  box-shadow: 0 0 0 1px #e6571f;
+  border: none;
+  background-image: url(https://img.icons8.com/ios-glyphs/30/999999/keyboard.png);
+  transition: 0.15s;
+}
+
+.joinButton {
+  width: 120px;
+  height: 48px;
+  background-color: #ebdddddb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(14, 7, 7);
+  border-radius: 10px;
+  box-shadow: none;
+  border: none;
+  transition: 0.15s;
+  margin-right: 40px;
+  font-size: 1rem;
+  user-select: none;
+  cursor: pointer;
+}
+
+.joinButton:hover {
+  transition: 0.15s;
+  cursor: pointer;
+  background-color: #00f51d15;
+}
+
+/* --------------------------------------------------------------------- */
+/* Starting the second div section */
+
+.second_sec{
+  margin-top : 100px;
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+.line{
+  border: 1.5px solid black;
+  width:75%;
+}
+
+.class_box{
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: row; */
+  margin-top: 5px;
+  padding: 10px;
+ 
+}
+
+.class_item{
+  border: 2px solid black;
+  max-width: 180px;
+  height: 180px;
+  flex-basis: 15%;
+  border-radius: 10px;
+  flex-grow: 0;
+  margin: 5px 10px 10px 5px;
+  /* flex-shrink: 1; */
+  
+}
