@@ -12,8 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import logo from "../../logo.svg"
-
+import logo from "../../logo.svg";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 const settings = ["Profile", "Logout"];
 const Logo = () => {
@@ -54,6 +54,16 @@ const Logo = () => {
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const navigate = useNavigate();
+  useEffect(() => {
+    // Check if tokens are present in local storage
+    const token = localStorage.getItem("token");
+
+    // If tokens are not present, navigate to the register page
+    if (!token) {
+      navigate("/");
+    }
+  }, [navigate]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -66,7 +76,16 @@ function ResponsiveAppBar() {
     setAnchorElNav(null);
   };
 
-  const handleCloseUserMenu = () => {
+  const handleCloseUserMenu = (setting) => {
+    switch (setting) {
+      case "Logout": {
+        localStorage.removeItem("token");
+        localStorage.removeItem("name");
+        localStorage.removeItem("email");
+        navigate("/");
+        break;
+      }
+    }
     setAnchorElUser(null);
   };
 
@@ -164,7 +183,10 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem
+                  key={setting}
+                  onClick={() => handleCloseUserMenu(setting)}
+                >
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

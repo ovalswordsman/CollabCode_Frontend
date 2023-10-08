@@ -8,21 +8,31 @@ import { GoogleLogin } from "@react-oauth/google";
 import jwtDecode from "jwt-decode";
 
 import axiosClient from "../../middleware/axios";
+import { useEffect } from "react";
 
 const Login = () => {
   const navigate = useNavigate();
   const clientID = process.env.REACT_APP_GOOGLE_CLIENT_ID;
-  const handleRes = (res) => {
+  useEffect(() => {
+    // Check if a token is already present in local storage
+    const token = localStorage.getItem("token");
+    if (token) {
+      // Redirect to the home page if a token is found
+      navigate("/home");
+    }
+  }, [navigate]);
+  const handleRes = async (res) => {
     const data = jwtDecode(res.credential);
     axiosClient
-      .post("/register", data)
+      .post("http://localhost:8080/register", data)
       .then((res) => {
         if (res.status === 200) {
           console.log(res);
           localStorage.setItem("token", res.data.token);
           localStorage.setItem("name", res.data.name);
           localStorage.setItem("email", res.data.email);
-          navigate('/home')
+          localStorage.setItem("picture", res.data.picture);
+          navigate("/home");
         }
       })
       .then((error) => console.log(error));

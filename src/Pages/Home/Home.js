@@ -7,16 +7,18 @@ import { useNavigate } from "react-router-dom";
 import axiosClient from "../../middleware/axios";
 const Home = () => {
   const [modal, setModal] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [picture, setPicture] = useState();
   const navigate = useNavigate();
   const getData = async () => {
     axiosClient
       .get("http://localhost:8080/login")
       .then((res) => {
-        if (res.status !== 401) {
-          navigate("/home");
-        } else {
-          const data = res.json();
-          console.log(data);
+        if (res.status === 201) {
+          setEmail(localStorage.getItem("email"));
+          setPicture(localStorage.getItem("picture"));
+          setName(localStorage.getItem("name"));
         }
       })
       .then((error) => console.log(error));
@@ -53,12 +55,11 @@ const Home = () => {
         <p>Already Joined</p>
         <div className={styles.line}></div>
         <div className={styles.class_box}>
-          <div className={styles.class_item}></div>
-          {/* <div className={styles.class_item}></div>
-            <div className={styles.class_item}></div>
-            <div className={styles.class_item}></div>
-            <div className={styles.class_item}></div>
-            <div className={styles.class_item}></div> */}
+          <div className={styles.class_item}>
+            <div className={styles.name}>{name}</div>
+            <div className={styles.email}>{localStorage.getItem("email")}</div>
+            <div className={styles.pciture}>{picture}</div>
+          </div>
         </div>
       </div>
     </div>
